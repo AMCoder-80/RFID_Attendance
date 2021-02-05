@@ -1,0 +1,700 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>RFID Management</title>
+<meta name="generator" content="WYSIWYG Web Builder 15 - http://www.wysiwygwebbuilder.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="16.png" rel="icon" sizes="12x16" type="image/png">
+<link href="32.png" rel="icon" sizes="24x32" type="image/png">
+<link href="64.png" rel="icon" sizes="48x64" type="image/png">
+<style>body { background-color:#FFFFFF; color:#000000; font-family:Arial; font-weight:normal; font-size:13px; line-height:1.1875; margin:0; padding:0; }
+</style>
+<link href="base/jquery-ui.min.css" rel="stylesheet">
+<link href="font-awesome.min.css" rel="stylesheet">
+<style>@font-face { font-family:"Material Icons"; font-style:normal; font-weight:400; src:local('Material Icons'), local('MaterialIcons-Regular'), url(MaterialIcons-Regular.woff2) format('woff2'), url(MaterialIcons-Regular.woff) format('woff'), url(MaterialIcons-Regular.ttf) format('truetype'); }
+.material-icons { font-family:"Material Icons"; font-weight:normal; font-style:normal; font-size:24px; display:inline-block; line-height:1; text-transform:none; letter-spacing:normal; word-wrap:normal; white-space:nowrap; direction:ltr; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; -moz-osx-font-smoothing:grayscale; font-feature-settings:"liga"; }
+a { color:#0000FF; text-decoration:underline; }
+a:visited { color:#800080; }
+a:active { color:#FF0000; }
+a:hover { color:#0000FF; text-decoration:underline; }
+input:focus,textarea:focus,select:focus { outline:none; }
+#PageHeader1 { background-color:#FFFFFF; background-image:none; box-sizing:border-box; }
+#wb_opener { transform:rotate(0deg); transform-origin:50% 50%; }
+#opener { border-width:0; vertical-align:top; }
+#wb_LayoutGrid1 { clear:both; position:relative; table-layout:fixed; display:table; text-align:center; width:100%; background-color:transparent; background-image:none; border:0px solid #CCCCCC; box-sizing:border-box; margin:0; }
+#LayoutGrid1 { box-sizing:border-box; padding:0px 15px 0px 15px; margin-right:auto; margin-left:auto; }
+#LayoutGrid1 > .row { margin-right:-15px; margin-left:-15px; }
+#LayoutGrid1 > .row > .col-1 { box-sizing:border-box; font-size:0px; min-height:1px; padding-right:15px; padding-left:15px; position:relative; }
+#LayoutGrid1 > .row > .col-1 { float:left; }
+#LayoutGrid1 > .row > .col-1 { background-color:transparent; background-image:none; border:0px solid #FFFFFF; width:100%; text-align:center; }
+#LayoutGrid1:before,#LayoutGrid1:after,#LayoutGrid1 .row:before,#LayoutGrid1 .row:after { display:table; content:" "; }
+#LayoutGrid1:after,#LayoutGrid1 .row:after { clear:both; }
+@media (max-width: 480px) {
+#LayoutGrid1 > .row > .col-1 { float:none; width:100%  !important; }
+}
+#Label1 { border:0px solid transparent; border-radius:4px; background-color:transparent; background-image:url(RFID-Management_Label1_bkgrnd.png); background-repeat:no-repeat; background-position:left top; background-size:100% 100%; color:#FFFFFF; font-family:"Comic Sans MS"; font-weight:bold; font-style:italic; font-size:48px; box-sizing:border-box; padding:4px 4px 4px 4px; margin:0; text-align:center; vertical-align:top; }
+#wb_LayoutGrid2 { clear:both; position:relative; table-layout:fixed; display:table; text-align:center; width:100%; background-color:transparent; background-image:none; border:0px solid #CCCCCC; box-sizing:border-box; margin:0; }
+#LayoutGrid2 { box-sizing:border-box; padding:0px 15px 0px 15px; margin-right:auto; margin-left:auto; }
+#LayoutGrid2 > .row { margin-right:-15px; margin-left:-15px; }
+#LayoutGrid2 > .row > .col-1 { box-sizing:border-box; font-size:0px; min-height:1px; padding-right:15px; padding-left:15px; position:relative; }
+#LayoutGrid2 > .row > .col-1 { float:left; }
+#LayoutGrid2 > .row > .col-1 { background-color:transparent; background-image:none; border:0px solid #FFFFFF; width:100%; text-align:center; }
+#LayoutGrid2:before,#LayoutGrid2:after,#LayoutGrid2 .row:before,#LayoutGrid2 .row:after { display:table; content:" "; }
+#LayoutGrid2:after,#LayoutGrid2 .row:after { clear:both; }
+@media (max-width: 480px) {
+#LayoutGrid2 > .row > .col-1 { float:none; width:100%  !important; }
+}
+#Line1 { border-color:#FFFFFF; border-style:solid; border-bottom-width:52px; border-top:0px; border-left:0px; border-right:0px; height:0  !important; line-height:0px  !important; margin:0; padding:0; }
+#wb_LayoutGrid3 { clear:both; position:relative; table-layout:fixed; display:table; text-align:center; width:100%; background-color:transparent; background-image:none; border:0px solid #CCCCCC; box-sizing:border-box; margin:0; }
+#LayoutGrid3 { box-sizing:border-box; padding:0px 15px 0px 15px; margin-right:auto; margin-left:auto; }
+#LayoutGrid3 > .row { margin-right:-15px; margin-left:-15px; }
+#LayoutGrid3 > .row > .col-1,#LayoutGrid3 > .row > .col-2,#LayoutGrid3 > .row > .col-3 { box-sizing:border-box; font-size:0px; min-height:1px; padding-right:15px; padding-left:15px; position:relative; }
+#LayoutGrid3 > .row > .col-1,#LayoutGrid3 > .row > .col-2,#LayoutGrid3 > .row > .col-3 { float:left; }
+#LayoutGrid3 > .row > .col-1 { background-color:transparent; background-image:none; border:0px solid #FFFFFF; width:33.33333333%; text-align:center; }
+#LayoutGrid3 > .row > .col-2 { background-color:transparent; background-image:none; border:0px solid #FFFFFF; width:33.33333333%; text-align:center; }
+#LayoutGrid3 > .row > .col-3 { background-color:transparent; background-image:none; border:0px solid #FFFFFF; width:33.33333333%; text-align:center; }
+#LayoutGrid3:before,#LayoutGrid3:after,#LayoutGrid3 .row:before,#LayoutGrid3 .row:after { display:table; content:" "; }
+#LayoutGrid3:after,#LayoutGrid3 .row:after { clear:both; }
+@media (max-width: 480px) {
+#LayoutGrid3 > .row > .col-1,#LayoutGrid3 > .row > .col-2,#LayoutGrid3 > .row > .col-3 { float:none; width:100%  !important; }
+}
+#wb_Image1 { margin:0; vertical-align:top; }
+#Image1 { border:0px solid #000000; padding:0; display:inline-block; width:212px; height:201px; vertical-align:top; }
+#wb_LayoutGrid4 { clear:both; position:relative; table-layout:fixed; display:table; text-align:center; width:100%; background-color:transparent; background-image:none; border:0px solid #CCCCCC; box-sizing:border-box; margin:0; }
+#LayoutGrid4 { box-sizing:border-box; padding:0px 15px 0px 15px; margin-right:auto; margin-left:auto; }
+#LayoutGrid4 > .row { margin-right:-15px; margin-left:-15px; }
+#LayoutGrid4 > .row > .col-1,#LayoutGrid4 > .row > .col-2,#LayoutGrid4 > .row > .col-3 { box-sizing:border-box; font-size:0px; min-height:1px; padding-right:15px; padding-left:15px; position:relative; }
+#LayoutGrid4 > .row > .col-1,#LayoutGrid4 > .row > .col-2,#LayoutGrid4 > .row > .col-3 { float:left; }
+#LayoutGrid4 > .row > .col-1 { background-color:transparent; background-image:none; border:0px solid #FFFFFF; width:41.66666667%; text-align:center; }
+#LayoutGrid4 > .row > .col-2 { background-color:transparent; background-image:none; border:0px solid #FFFFFF; width:16.66666667%; text-align:center; }
+#LayoutGrid4 > .row > .col-3 { background-color:transparent; background-image:none; border:0px solid #FFFFFF; width:41.66666667%; text-align:center; }
+#LayoutGrid4:before,#LayoutGrid4:after,#LayoutGrid4 .row:before,#LayoutGrid4 .row:after { display:table; content:" "; }
+#LayoutGrid4:after,#LayoutGrid4 .row:after { clear:both; }
+@media (max-width: 480px) {
+#LayoutGrid4 > .row > .col-1,#LayoutGrid4 > .row > .col-2,#LayoutGrid4 > .row > .col-3 { float:none; width:100%  !important; }
+}
+#Line2 { border-color:#FFFFFF; border-style:solid; border-bottom-width:32px; border-top:0px; border-left:0px; border-right:0px; height:0  !important; line-height:0px  !important; margin:0; padding:0; }
+#Line3 { border-color:#FFFFFF; border-style:solid; border-bottom-width:28px; border-top:0px; border-left:0px; border-right:0px; height:0  !important; line-height:0px  !important; margin:0; padding:0; }
+#send_btn { font-family:"Comic Sans MS"; font-weight:bold; font-size:15px; font-style:italic; margin:0; }
+#send_btn .ui-button { position:absolute; padding:0; }
+#send_btn .ui-primary { background-image:none  !important; text-indent:0; display:inline-block; font-family:FontAwesome; font-style:normal; font-weight:normal; line-height:1; position:absolute; left:10px; top:50%; margin-top:-7px; color:#FFFFFF; }
+#send_btn .ui-primary:before { content:"\f1c0"; }
+#send_btn:hover .ui-primary { color:#FFFFFF; }
+#send_btn:active .ui-primary { color:#FFA500; }
+#send_btn.ui-corner-all { border-bottom-left-radius:10px; border-top-left-radius:10px; }
+#send_btn.ui-corner-all { border-bottom-right-radius:10px; border-top-right-radius:10px; }
+#send_btn.ui-button { background-color:#00BFFF; background-image:none; border:3px solid #1E90FF; color:#FFFFFF; }
+#send_btn.ui-state-hover,#send_btn.ui-button:hover { border-color:#3CB371; background-color:#00FF7F; background-image:none; color:#FF0000; }
+#send_btn.ui-state-active,#send_btn.ui-button:active { border-color:#FF6347; background-color:#FF0000; background-image:none; color:#FFA500; }
+#send_btn.ui-button .ui-icon { background-image:url(RFID-Management-send_btn-default.png); background-position:0 0; }
+#send_btn.ui-button:hover .ui-icon { background-image:url(RFID-Management-send_btn-hover.png); background-position:0 0; }
+#send_btn.ui-button:active .ui-icon { background-image:url(RFID-Management-send_btn-active.png); background-position:0 0; }
+#send_btn.ui-visual-focus { box-shadow:none; }
+#wb_LayoutGrid5 { clear:both; position:relative; table-layout:fixed; display:table; text-align:center; width:100%; background-color:transparent; background-image:none; border:0px solid #CCCCCC; box-sizing:border-box; margin:0; }
+#LayoutGrid5 { box-sizing:border-box; padding:0px 15px 0px 15px; margin-right:auto; margin-left:auto; }
+#LayoutGrid5 > .row { margin-right:-15px; margin-left:-15px; }
+#LayoutGrid5 > .row > .col-1,#LayoutGrid5 > .row > .col-2 { box-sizing:border-box; font-size:0px; min-height:1px; padding-right:15px; padding-left:15px; position:relative; }
+#LayoutGrid5 > .row > .col-1,#LayoutGrid5 > .row > .col-2 { float:left; }
+#LayoutGrid5 > .row > .col-1 { background-color:transparent; background-image:none; border:0px solid #FFFFFF; width:50%; text-align:right; }
+#LayoutGrid5 > .row > .col-2 { background-color:transparent; background-image:none; border:0px solid #FFFFFF; width:50%; text-align:left; }
+#LayoutGrid5:before,#LayoutGrid5:after,#LayoutGrid5 .row:before,#LayoutGrid5 .row:after { display:table; content:" "; }
+#LayoutGrid5:after,#LayoutGrid5 .row:after { clear:both; }
+@media (max-width: 480px) {
+#LayoutGrid5 > .row > .col-1,#LayoutGrid5 > .row > .col-2 { float:none; width:100%  !important; }
+}
+#Line4 { border-color:#FFFFFF; border-style:solid; border-bottom-width:9px; border-top:0px; border-left:0px; border-right:0px; height:0  !important; line-height:0px  !important; margin:0; padding:0; }
+#wb_UPD_box .ui-widget { font-family:"Comic Sans MS"; font-weight:bold; font-size:15px; font-style:italic; }
+#wb_UPD_box { margin:0; }
+#wb_UPD_box .ui-button { margin:0; padding:0; line-height:29px; }
+#wb_UPD_box .ui-corner-all,#wb_UPD_box .ui-corner-left { border-bottom-left-radius:10px; border-top-left-radius:10px; }
+#wb_UPD_box .ui-corner-all,#wb_UPD_box .ui-corner-right { border-bottom-right-radius:10px; border-top-right-radius:10px; }
+#wb_UPD_box .ui-button { background-color:#F6F6F6; background-image:none; border:3px solid #C5C5C5; color:#454545; }
+#wb_UPD_box .ui-state-hover,#wb_UPD_box .ui-button:hover { border-color:#CCCCCC; background-color:#EDEDED; background-image:none; color:#2B2B2B; }
+#wb_UPD_box .ui-state-active,#wb_UPD_box .ui-button:active,#wb_UPD_box .ui-state-active:hover { border-color:#FFD700; background-color:#FFFF00; background-image:none; color:#FF4500; }
+#wb_UPD_box .ui-button .ui-icon { background-image:url(RFID-Management-UPD_box-default.png); background-position:0 0; }
+#wb_UPD_box .ui-button:hover .ui-icon { background-image:url(RFID-Management-UPD_box-hover.png); background-position:0 0; }
+#wb_UPD_box .ui-button:active .ui-icon { background-image:url(RFID-Management-UPD_box-active.png); background-position:0 0; }
+#wb_UPD_box .ui-visual-focus { box-shadow:none; }
+#wb_save_box .ui-widget { font-family:"Comic Sans MS"; font-weight:bold; font-size:15px; font-style:italic; }
+#wb_save_box { margin:0; }
+#wb_save_box .ui-button { margin:0; padding:0; line-height:29px; }
+#wb_save_box .ui-corner-all,#wb_save_box .ui-corner-left { border-bottom-left-radius:10px; border-top-left-radius:10px; }
+#wb_save_box .ui-corner-all,#wb_save_box .ui-corner-right { border-bottom-right-radius:10px; border-top-right-radius:10px; }
+#wb_save_box .ui-button { background-color:#F6F6F6; background-image:none; border:3px solid #C5C5C5; color:#454545; }
+#wb_save_box .ui-state-hover,#wb_save_box .ui-button:hover { border-color:#CCCCCC; background-color:#EDEDED; background-image:none; color:#2B2B2B; }
+#wb_save_box .ui-state-active,#wb_save_box .ui-button:active,#wb_save_box .ui-state-active:hover { border-color:#FFD700; background-color:#FFFF00; background-image:none; color:#FF4500; }
+#wb_save_box .ui-button .ui-icon { background-image:url(RFID-Management-save_box-default.png); background-position:0 0; }
+#wb_save_box .ui-button:hover .ui-icon { background-image:url(RFID-Management-save_box-hover.png); background-position:0 0; }
+#wb_save_box .ui-button:active .ui-icon { background-image:url(RFID-Management-save_box-active.png); background-position:0 0; }
+#wb_save_box .ui-visual-focus { box-shadow:none; }
+#Line5 { border-color:#FFFFFF; border-style:solid; border-bottom-width:26px; border-top:0px; border-left:0px; border-right:0px; height:0  !important; line-height:0px  !important; margin:0; padding:0; }
+#delete_btn { font-family:"Comic Sans MS"; font-weight:bold; font-size:15px; font-style:italic; margin:0; }
+#delete_btn .ui-button { position:absolute; padding:0; }
+#delete_btn .ui-primary { background-image:none  !important; text-indent:0; display:inline-block; font-family:"Material Icons"; font-style:normal; font-weight:normal; line-height:1; position:absolute; left:10px; top:50%; margin-top:-7px; color:#FFFFFF; }
+#delete_btn .ui-primary:before { content:"\e872"; }
+#delete_btn:hover .ui-primary { color:#FFFFFF; }
+#delete_btn:active .ui-primary { color:#FFA500; }
+#delete_btn.ui-corner-all { border-bottom-left-radius:10px; border-top-left-radius:10px; }
+#delete_btn.ui-corner-all { border-bottom-right-radius:10px; border-top-right-radius:10px; }
+#delete_btn.ui-button { background-color:#00BFFF; background-image:none; border:3px solid #1E90FF; color:#FFFFFF; }
+#delete_btn.ui-state-hover,#delete_btn.ui-button:hover { border-color:#32CD32; background-color:#00FF7F; background-image:none; color:#FF0000; }
+#delete_btn.ui-state-active,#delete_btn.ui-button:active { border-color:#FF6347; background-color:#FF0000; background-image:none; color:#FFA500; }
+#delete_btn.ui-button .ui-icon { background-image:url(RFID-Management-delete_btn-default.png); background-position:0 0; }
+#delete_btn.ui-button:hover .ui-icon { background-image:url(RFID-Management-delete_btn-hover.png); background-position:0 0; }
+#delete_btn.ui-button:active .ui-icon { background-image:url(RFID-Management-delete_btn-active.png); background-position:0 0; }
+#delete_btn.ui-visual-focus { box-shadow:none; }
+#Line6 { border-color:#FFFFFF; border-style:solid; border-bottom-width:19px; border-top:0px; border-left:0px; border-right:0px; height:0  !important; line-height:0px  !important; margin:0; padding:0; }
+#request_btn { font-family:"Comic Sans MS"; font-weight:bold; font-size:15px; font-style:italic; margin:0; }
+#request_btn .ui-button { position:absolute; padding:0; }
+#request_btn .ui-primary { background-image:none  !important; text-indent:0; display:inline-block; font-family:"Material Icons"; font-style:normal; font-weight:normal; line-height:1; position:absolute; left:10px; top:50%; margin-top:-7px; color:#FFFFFF; }
+#request_btn .ui-primary:before { content:"\e307"; }
+#request_btn:hover .ui-primary { color:#FFFFFF; }
+#request_btn:active .ui-primary { color:#FFA500; }
+#request_btn.ui-corner-all { border-bottom-left-radius:10px; border-top-left-radius:10px; }
+#request_btn.ui-corner-all { border-bottom-right-radius:10px; border-top-right-radius:10px; }
+#request_btn.ui-button { background-color:#00BFFF; background-image:none; border:3px solid #1E90FF; color:#FFFFFF; }
+#request_btn.ui-state-hover,#request_btn.ui-button:hover { border-color:#32CD32; background-color:#00FF7F; background-image:none; color:#FF0000; }
+#request_btn.ui-state-active,#request_btn.ui-button:active { border-color:#FF6347; background-color:#FF0000; background-image:none; color:#FFA500; }
+#request_btn.ui-button .ui-icon { background-image:url(RFID-Management-request_btn-default.png); background-position:0 0; }
+#request_btn.ui-button:hover .ui-icon { background-image:url(RFID-Management-request_btn-hover.png); background-position:0 0; }
+#request_btn.ui-button:active .ui-icon { background-image:url(RFID-Management-request_btn-active.png); background-position:0 0; }
+#request_btn.ui-visual-focus { box-shadow:none; }
+#Line7 { border-color:#FFFFFF; border-style:solid; border-bottom-width:69px; border-top:0px; border-left:0px; border-right:0px; height:0  !important; line-height:0px  !important; margin:0; padding:0; }
+#Label2 { border:0px solid #CCCCCC; border-radius:4px; background-color:transparent; background-image:none; color:#20B2AA; font-family:"Comic Sans MS"; font-weight:bold; font-style:italic; font-size:17px; box-sizing:border-box; padding:4px 4px 4px 4px; margin:0; text-align:center; vertical-align:top; }
+#Line8 { border-color:#FFFFFF; border-style:solid; border-bottom-width:6px; border-top:0px; border-left:0px; border-right:0px; height:0  !important; line-height:0px  !important; margin:0; padding:0; }
+#wb_mode_switch { position:relative; margin:0; }
+#mode_switch { display:none; }
+#mode_switch-label { display:block; overflow:hidden; cursor:pointer; border:2px solid #FF6347; border-radius:31px; box-sizing:border-box; max-width:100%; height:100%; -webkit-transition:border-color 300ms ease-in 0s; transition:border-color 300ms ease-in 0s; }
+#mode_switch-inner { box-sizing:border-box; display:block; width:200%; margin-left:-100%; -webkit-transition:margin 300ms ease-in 0s; transition:margin 300ms ease-in 0s; }
+#mode_switch-inner:before,#mode_switch-inner:after { display:block; float:left; width:50%; height:31px; padding:0; line-height:31px; color:#FFFFFF; font-family:"Comic Sans MS"; font-weight:bold; font-style:italic; font-size:15px; box-sizing:border-box; border-radius:31px; text-align:center; }
+#mode_switch-inner:before { content:"Register"; padding-right:31px; background-color:#90EE90; color:#FFFFFF; border-radius:31px 0 0 31px; }
+#mode_switch-inner:after { content:"Normal"; padding-left:31px; background-color:#FF69B4; color:#FFFFFF; border-radius:0 31px 31px 0; }
+#mode_switch-switch { display:block; width:31px; margin:0px; background:#FF0000; border:2px solid #636363; border-radius:31px; box-shadow:0px 0px 5px rgba(0,0,0,0.30); position:absolute; top:2px; bottom:2px; right:85px; -webkit-transition:all 300ms ease-in 0s; transition:all 300ms ease-in 0s; box-sizing:border-box; }
+#mode_switch:checked + #mode_switch-label { border-color:#32CD32; }
+#mode_switch:checked + #mode_switch-label #mode_switch-inner { margin-left:0; }
+#mode_switch:checked + #mode_switch-label #mode_switch-switch { right:2px; background:#00FF00; border-color:#636363; }
+#Line9 { border-color:#FFFFFF; border-style:solid; border-bottom-width:33px; border-top:0px; border-left:0px; border-right:0px; height:0  !important; line-height:0px  !important; margin:0; padding:0; }
+#card_id { border:2px solid #CCCCCC; border-radius:8px; background-color:#87CEFA; background-image:none; color:#FFFFFF; font-family:"Comic Sans MS"; font-weight:bold; font-style:italic; font-size:17px; box-sizing:border-box; line-height:23px; padding:4px 4px 4px 4px; margin:0; text-align:center; }
+#card_id:focus { border-color:#00008B; box-shadow:inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(0,0,139,0.60); outline:0; }
+#card_id::placeholder { color:#FFFFFF; opacity:1; }
+#card_id::-ms-input-placeholder { color:#FFFFFF; }
+#Line10 { border-color:#FFFFFF; border-style:solid; border-bottom-width:33px; border-top:0px; border-left:0px; border-right:0px; height:0  !important; line-height:0px  !important; margin:0; padding:0; }
+#name { border:2px solid #CCCCCC; border-radius:8px; background-color:#FFFFFF; background-image:none; color:#4F4F4F; font-family:"Comic Sans MS"; font-weight:bold; font-style:italic; font-size:17px; box-sizing:border-box; line-height:23px; padding:4px 4px 4px 4px; margin:0; text-align:center; }
+#name:focus { border-color:#FF00FF; box-shadow:inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(255,0,255,0.60); outline:0; }
+#name::placeholder { color:#A9A9A9; opacity:1; }
+#name::-ms-input-placeholder { color:#A9A9A9; }
+#Line11 { border-color:#FFFFFF; border-style:solid; border-bottom-width:33px; border-top:0px; border-left:0px; border-right:0px; height:0  !important; line-height:0px  !important; margin:0; padding:0; }
+#auth_state { border:1px solid #CCCCCC; border-radius:4px; background-color:#FFFFFF; background-image:none; color:#808080; font-family:"Comic Sans MS"; font-weight:bold; font-style:italic; font-size:17px; padding:4px 4px 4px 4px; margin:0; box-sizing:border-box; }
+#auth_state:focus { border-color:#FFFF00; box-shadow:inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(255,255,0,0.60); outline:0; }
+#Line12 { border-color:#FFFFFF; border-style:solid; border-bottom-width:33px; border-top:0px; border-left:0px; border-right:0px; height:0  !important; line-height:0px  !important; margin:0; padding:0; }
+#wb_LayoutGrid6 { clear:both; position:relative; table-layout:fixed; display:table; text-align:center; width:100%; background-color:transparent; background-image:none; border:0px solid #CCCCCC; box-sizing:border-box; margin:0; }
+#LayoutGrid6 { box-sizing:border-box; padding:0px 15px 0px 15px; margin-right:auto; margin-left:auto; }
+#LayoutGrid6 > .row { margin-right:-15px; margin-left:-15px; }
+#LayoutGrid6 > .row > .col-1 { box-sizing:border-box; font-size:0px; min-height:1px; padding-right:15px; padding-left:15px; position:relative; }
+#LayoutGrid6 > .row > .col-1 { float:left; }
+#LayoutGrid6 > .row > .col-1 { background-color:transparent; background-image:none; border:0px solid #FFFFFF; width:100%; text-align:center; }
+#LayoutGrid6:before,#LayoutGrid6:after,#LayoutGrid6 .row:before,#LayoutGrid6 .row:after { display:table; content:" "; }
+#LayoutGrid6:after,#LayoutGrid6 .row:after { clear:both; }
+@media (max-width: 480px) {
+#LayoutGrid6 > .row > .col-1 { float:none; width:100%  !important; }
+}
+#Line13 { border-color:#FFFFFF; border-style:solid; border-bottom-width:29px; border-top:0px; border-left:0px; border-right:0px; height:0  !important; line-height:0px  !important; margin:0; padding:0; }
+#response { border:0px solid #CCCCCC; border-radius:4px; background-color:transparent; background-image:none; color:#1E90FF; font-family:"Comic Sans MS"; font-weight:bold; font-style:italic; font-size:20px; box-sizing:border-box; padding:4px 4px 4px 4px; margin:0; text-align:center; vertical-align:top; }
+#menu { background-clip:padding-box; background-color:#00FEFE; background-image:none; box-sizing:border-box; }
+#menu_panel { background-clip:padding-box; background-color:#00FEFE; background-image:none; display:none; position:fixed; top:0; height:100%; width:309px; z-index:9999; }
+#Label12 { border:0px solid #CCCCCC; border-radius:8px; background-color:transparent; background-image:none; color:#000000; font-family:"Comic Sans MS"; font-weight:bold; font-style:italic; font-size:35px; padding:4px 4px 4px 4px; margin:0; text-align:center; vertical-align:top; }
+#wb_Shape1 { transform:rotate(0deg); transform-origin:50% 50%; }
+#Shape1 { border-width:0; vertical-align:top; }
+#wb_CssMenu1 { border:0px solid #000000; background-color:#00FEFE; margin:0; text-align:left; }
+#wb_CssMenu1 ul { list-style-type:none; margin:0; padding:0; position:relative; display:inline-block; width:210px; }
+#wb_CssMenu1 li { float:left; margin:0; padding:0px 0px 16px 0px; width:210px; }
+#wb_CssMenu1 a { display:block; color:#0000FF; border:4px ridge #00008B; border-radius:15px; background-color:#AFEEEE; background-image:none; font-family:"Comic Sans MS"; font-weight:normal; font-size:21px; font-style:normal; text-decoration:none; width:192px; height:47px; padding:0px 5px 0px 5px; vertical-align:middle; line-height:47px; text-align:center; }
+#wb_CssMenu1 li:hover a,#wb_CssMenu1 a:hover { color:#FFFFFF; background-color:#4169E1; background-image:none; border:4px ridge #00BFFF; }
+#wb_CssMenu1 .firstmain a { margin-top:0px; }
+#wb_CssMenu1 li.lastmain { padding-bottom:0px; }
+#wb_CssMenu1 br { clear:both; font-size:1px; height:0; line-height:0; }
+#wb_CssMenu1 { position:absolute; left:42px; top:209px; width:224px; height:345px; z-index:32; }
+#wb_Shape1 { position:absolute; left:17px; top:13px; width:68px; height:67px; z-index:31; }
+#Line11 { display:block; width:100%; z-index:9; }
+#card_id { display:block; width:100%; height:35px; z-index:6; }
+#opener { width:68px; height:67px; }
+#Line12 { display:block; width:100%; z-index:11; }
+#Line13 { display:block; width:100%; z-index:28; }
+#Line5 { display:block; width:100%; z-index:22; }
+#wb_UPD_box { display:inline-block; width:120px; height:35px; z-index:16; }
+#wb_Image1 { display:inline-block; width:212px; height:201px; z-index:3; }
+#wb_opener { position:absolute; left:15px; top:1px; width:68px; height:67px; z-index:0; }
+#PageHeader1 { position:fixed; text-align:left; left:0; top:0; right:0; height:68px; z-index:41; }
+#Line4 { display:block; width:100%; z-index:20; }
+#wb_uid1 { width:100%; height:100%; }
+#Line7 { display:block; width:100%; z-index:12; }
+#Line6 { display:block; width:100%; z-index:24; }
+#delete_btn { display:inline-block; width:140px; height:38px; z-index:23; }
+#wb_uid0 { width:100%; height:100%; }
+#Shape1 { width:68px; height:67px; }
+#Line1 { display:block; width:100%; z-index:2; }
+#send_btn { display:inline-block; width:140px; height:38px; z-index:19; }
+#wb_mode_switch { display:inline-block; width:118px; height:35px; z-index:15; }
+#Label12 { position:absolute; left:9px; top:96px; width:292px; height:92px; line-height:92px; z-index:30; }
+#Line3 { display:block; width:100%; z-index:18; }
+#auth_state { display:block; width:100%; height:31px; z-index:10; }
+#Line2 { display:block; width:100%; z-index:4; }
+#response { display:block; width:100%; z-index:29; }
+#wb_save_box { display:inline-block; width:120px; height:35px; z-index:17; }
+#menu { display:none; text-align:left; }
+#request_btn { display:inline-block; width:140px; height:38px; z-index:25; }
+#name { display:block; width:100%; height:35px; z-index:8; }
+#PageHeader1_sensitive { position:fixed; display:none; left:0; top:0; right:0; height:68px; z-index:9999; }
+#Label2 { display:block; width:100%; z-index:13; }
+#Line9 { display:block; width:100%; z-index:5; }
+#Line8 { display:block; width:100%; z-index:14; }
+#Line10 { display:block; width:100%; z-index:7; }
+#Label1 { display:block; width:100%; z-index:1; }
+</style>
+</head>
+<body>
+<div id="PageHeader1_sensitive"></div>
+<div id="PageHeader1">
+<div id="wb_opener">
+<a href="#" onclick="ShowPanel('menu', event);return false;"><img src="img0003.png" id="opener" alt=""></a></div>
+</div>
+
+<div id="wb_LayoutGrid1">
+<div id="LayoutGrid1">
+<div class="row">
+<div class="col-1">
+<label for="" id="Label1">RFID Management</label>
+</div>
+</div>
+</div>
+</div>
+<div id="wb_LayoutGrid2">
+<div id="LayoutGrid2">
+<div class="row">
+<div class="col-1">
+<hr id="Line1">
+</div>
+</div>
+</div>
+</div>
+<div id="wb_LayoutGrid3">
+<div id="LayoutGrid3">
+<div class="row">
+<div class="col-1">
+</div>
+<div class="col-2">
+<div id="wb_Image1">
+<img src="images.png" id="Image1" alt="">
+</div>
+<hr id="Line2">
+</div>
+<div class="col-3">
+</div>
+</div>
+</div>
+</div>
+<div id="wb_LayoutGrid4">
+<div id="LayoutGrid4">
+<div class="row">
+<div class="col-1">
+<hr id="Line9">
+<input type="text" id="card_id" name="Editbox1" value="" readonly spellcheck="false" placeholder="&quot;Card ID&quot;">
+<hr id="Line10">
+<input type="text" id="name" name="Editbox2" value="" spellcheck="false" placeholder="&quot;Name&quot;">
+<hr id="Line11">
+<select name="Combobox1" size="1" id="auth_state">
+<option selected value="Allow">Allow</option>
+<option value="Not Allow">Not Allow</option>
+<option value="Undefine">Undefine</option>
+</select>
+<hr id="Line12">
+</div>
+<div class="col-2">
+<hr id="Line7">
+<label for="" id="Label2">Mode</label>
+<hr id="Line8">
+<div id="wb_mode_switch">
+<input type="checkbox" name="" id="mode_switch" value="Register">
+<label id="mode_switch-label" for="mode_switch">
+<span id="mode_switch-inner"></span>
+<span id="mode_switch-switch"></span>
+</label>
+
+</div>
+</div>
+<div class="col-3">
+<hr id="Line3">
+<button type="button" id="send_btn" onclick="send();return false;" name="" value="Send">Send</button>
+<hr id="Line4">
+<div id="wb_LayoutGrid5">
+<div id="LayoutGrid5">
+<div class="row">
+<div class="col-1">
+<div id="wb_UPD_box">
+<input type="radio" id="UPD_box" name="A" value="Update"><label id="wb_uid0" for="UPD_box">Update</label>
+</div>
+</div>
+<div class="col-2">
+<div id="wb_save_box">
+<input type="radio" id="save_box" name="A" value="Save" checked="checked"><label id="wb_uid1" for="save_box">Save</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr id="Line5">
+<button type="button" id="delete_btn" onclick="deleting();return false;" name="" value="Delete">Delete</button>
+<hr id="Line6">
+<button type="button" id="request_btn" onclick="table();return false;" name="" value="Request">Request</button>
+</div>
+</div>
+</div>
+</div>
+<div id="wb_LayoutGrid6">
+<div id="LayoutGrid6">
+<div class="row">
+<div class="col-1">
+<hr id="Line13">
+<label for="" id="response">Device Response</label>
+</div>
+</div>
+</div>
+</div>
+<div id="menu">
+<label for="" id="Label12">Admin Panel</label>
+<div id="wb_Shape1">
+<a href="#" onclick="HidePanel('menu', event);return false;"><img src="img0004.png" id="Shape1" alt=""></a></div>
+<div id="wb_CssMenu1">
+<ul role="menubar">
+<li class="firstmain"><a role="menuitem" href="#LayoutGrid1" target="_self">Main&nbsp;Panel</a>
+</li>
+<li><a role="menuitem" href="#LayoutGrid6" target="_self">Device&nbsp;Response</a>
+</li>
+<li><a role="menuitem" href="./Config-Page.html" target="_self">Config&nbsp;Page</a>
+</li>
+</ul>
+</div>
+</div>
+<script src="jquery-1.12.4.min.js"></script>
+<script src="jquery-ui.min.js"></script>
+<script src="wb.panel.min.js"></script>
+<script src="wwb15.min.js"></script>
+<script>
+$(document).ready(function()
+{
+var timerPageHeader1 = null;
+function PageHeader1Hide()
+{
+   var isTouch = (('ontouchstart' in window) || (navigator.msMaxTouchPoints > 0));
+   if (isTouch)
+      return;
+   timerPageHeader1 = setTimeout(function()
+   {
+      $('#PageHeader1').fadeTo(500, 0, function()
+      {
+         $('#PageHeader1_sensitive').show();
+      });
+   }, 100);
+}
+PageHeader1Hide();
+$('#PageHeader1_sensitive').on("mouseenter", function()
+{
+   clearTimeout(timerPageHeader1);
+   if ($('#PageHeader1_sensitive').is(":visible"))
+   {
+      $('#PageHeader1_sensitive').hide();
+      $('#PageHeader1').fadeTo(500, 1);
+   }
+});
+$('#PageHeader1').on("mouseleave",function()
+{
+   PageHeader1Hide();
+});
+   $("#send_btn").button({ icon: 'ui-primary', iconPosition: 'beginning' });
+   $("#UPD_box").checkboxradio({ icon:false });
+   $("#save_box").checkboxradio({ icon:false });
+   $("#delete_btn").button({ icon: 'ui-primary', iconPosition: 'beginning' });
+   $("#request_btn").button({ icon: 'ui-primary', iconPosition: 'beginning' });
+   $("#mode_switch").change(function()
+   {
+      if ($('#mode_switch').is(':checked'))
+      {
+         Register();;
+      }
+      if (!$('#mode_switch').is(':checked'))
+      {
+         Normal();;
+      }
+   });
+   $("#mode_switch").trigger('change');
+   $("#menu").panel({animate: true, animationDuration: 200, animationEasing: 'swing', dismissible: true, display: 'overlay', position: 'right'});
+   $("a[href*='#menu']").click(function(event)
+   {
+      event.preventDefault();
+      $('html, body').stop().animate({ scrollTop: $('#menu').offset().top }, 600, 'linear');
+   });
+});
+</script>
+<script>
+var Table = `
+    <style>.tableFixHead { overflow-y:auto; height:300px; }
+.tableFixHead thead th { position:sticky; top:0; }
+table { border-collapse:collapse; width:100%; }
+th,td { padding:8px 16px; border:1px solid #ccc; }
+th { background:#eee; }
+</style>
+  </head>
+  <body>
+    <div class="tableFixHead">
+      <table>
+        <thead>
+          <tr>
+            <th>Col 1</th>
+            <th>Col 2</th>
+            <th>Col 3</th>
+            <th>Col 4</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1.1</td>
+            <td>2.1</td>
+            <td>1.1</td>
+            <td>2.1</td>
+          </tr>
+          <tr>
+            <td>1.2</td>
+            <td>2.2</td>
+            <td>1.1</td>
+            <td>2.1</td>
+          </tr>
+          <tr>
+            <td>1.3</td>
+            <td>1.1</td>
+            <td>2.1</td>
+            <td>2.3</td>
+          </tr>
+          <tr>
+            <td>1.4</td>
+            <td>2.4</td>
+            <td>1.1</td>
+            <td>2.1</td>
+          </tr>
+          <tr>
+            <td>1.5</td>
+            <td>1.1</td>
+            <td>2.1</td>
+            <td>2.5</td>
+          </tr>
+ <tr>
+            <td>1.1</td>
+            <td>2.1</td>
+            <td>1.1</td>
+            <td>2.1</td>
+          </tr>
+          <tr>
+            <td>1.2</td>
+            <td>1.1</td>
+            <td>2.1</td>
+            <td>2.2</td>
+          </tr>
+          <tr>
+            <td>1.3</td>
+            <td>1.1</td>
+            <td>2.1</td>
+            <td>2.3</td>
+          </tr>
+          <tr>
+            <td>1.4</td>
+            <td>1.1</td>
+            <td>2.1</td>
+            <td>2.4</td>
+          </tr>
+          <tr>
+            <td>1.5</td>
+            <td>2.5</td>
+            <td>1.1</td>
+            <td>2.1</td>
+          </tr>
+ <tr>
+            <td>1.1</td>
+            <td>1.1</td>
+            <td>2.1</td>
+            <td>2.1</td>
+          </tr>
+          <tr>
+            <td>1.2</td>
+            <td>2.2</td>
+          </tr>
+          <tr>
+            <td>1.3</td>
+            <td>1.1</td>
+            <td>2.1</td>
+            <td>2.3</td>
+          </tr>
+          <tr>
+            <td>1.4</td>
+            <td>1.1</td>
+            <td>2.1</td>
+            <td>2.4</td>
+          </tr>
+          <tr>
+            <td>1.5</td>
+            <td>2.5</td>
+            <td>1.1</td>
+            <td>2.1</td>
+          </tr>
+ <tr>
+            <td>1.1</td>
+            <td>1.1</td>
+            <td>2.1</td>
+            <td>2.1</td>
+          </tr>
+          <tr>
+            <td>1.2</td>
+            <td>2.2</td>
+            <td>1.1</td>
+            <td>2.1</td>
+          </tr>
+          <tr>
+            <td>1.3</td>
+            <td>1.1</td>
+            <td>2.1</td>
+            <td>2.3</td>
+          </tr>
+          <tr>
+            <td>1.4</td>
+            <td>1.1</td>
+            <td>2.1</td>
+            <td>2.4</td>
+          </tr>
+          <tr>
+            <td>1.5</td>
+            <td>1.1</td>
+            <td>2.1</td>
+            <td>2.5</td>
+          </tr>
+ <tr>
+            <td>1.1</td>
+            <td>2.1</td>
+            <td>1.1</td>
+            <td>2.1</td>
+          </tr>
+          <tr>
+            <td>1.2</td>
+            <td>1.1</td>
+            <td>2.1</td>
+            <td>2.2</td>
+          </tr>
+          <tr>
+            <td>1.3</td>
+            <td>2.3</td>
+            <td>1.1</td>
+            <td>2.1</td>
+          </tr>
+          <tr>
+            <td>1.4</td>
+            <td>1.1</td>
+            <td>2.1</td>
+            <td>2.4</td>
+          </tr>
+          <tr>
+            <td>1.5</td>
+            <td>1.1</td>
+            <td>2.1</td>
+            <td>2.5</td>
+          </tr>
+ <tr>
+            <td>1.1</td>
+            <td>1.1</td>
+            <td>2.1</td>
+            <td>2.1</td>
+          </tr>
+          <tr>
+            <td>1.2</td>
+            <td>2.2</td>
+            <td>1.1</td>
+            <td>2.1</td>
+          </tr>
+          <tr>
+            <td>1.3</td>
+            <td>2.3</td>
+            <td>1.1</td>
+            <td>2.1</td>
+          </tr>
+          <tr>
+            <td>1.4</td>
+            <td>2.4</td>
+            <td>1.1</td>
+            <td>2.1</td>
+          </tr>
+          <tr>
+            <td>1.5</td>
+            <td>1.1</td>
+            <td>2.1</td>
+            <td>2.5</td>
+          </tr>
+ <tr>
+            <td>1.1</td>
+            <td>1.1</td>
+            <td>2.1</td>
+            <td>2.1</td>
+          </tr>
+          <tr>
+            <td>1.2</td>
+            <td>1.1</td>
+            <td>2.1</td>
+            <td>2.2</td>
+          </tr>
+          <tr>
+            <td>1.3</td>
+            <td>1.1</td>
+            <td>2.1</td>
+            <td>2.3</td>
+          </tr>
+          <tr>
+            <td>1.4</td>
+            <td>1.1</td>
+            <td>2.1</td>
+            <td>2.4</td>
+          </tr>
+          <tr>
+            <td>1.5</td>
+            <td>2.5</td>
+            <td>1.1</td>
+            <td>2.1</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+`;
+
+function send(){
+	if (document.getElementById("save_box").checked == true){
+		document.getElementById("response").innerHTML = "Saved";
+	}
+	else if (document.getElementById("UPD_box").checked == true){
+		document.getElementById("response").innerHTML = "Updated";
+	}
+}
+
+function deleting(){
+	if (document.getElementById("mode_switch").checked == true){
+		document.getElementById("response").innerHTML = "Register Mode";
+	}
+	else if (document.getElementById("mode_switch").checked == false){
+		document.getElementById("response").innerHTML = "Normal Mode";
+	}
+}
+
+function table(){
+	document.getElementById("response").innerHTML = Table;
+}
+
+function req(){
+	document.getElementById("auth_state").value = "MyValue";
+}
+</script>
+</body>
+</html>
